@@ -4,10 +4,13 @@ using namespace std;
 #include <sstream>
 #include <cstring>
 #include <map>
+#include <iostream>
+#include <regex>
 
-vector<string> split(string s, char delimeter)
+vector<string> split(string s, char delimeter = ' ')
 {
     // split string into vector of strings by certain delimeter
+
     vector<string> res;     
     string substr;     
     istringstream stream(s);
@@ -21,7 +24,9 @@ vector<string> split(string s, char delimeter)
 
 bool isCardString(string s)
 {
-    int idx = strspn(s.c_str(), "0123456789AJQK");
+    // mengecek apakah karakater-karakter yang digunakan valid
+
+    int idx = strspn(s.c_str(), "0123456789AJQK ");
 
     return idx == s.length();
 }
@@ -34,6 +39,7 @@ bool isNumCardsValid(vector<int> input)
 
     if (l != 4)
     {
+        cout << "Input harus berupa 4 karakter kartu valid yang dipisahi spasi!\n";
         return false;
     }
 
@@ -41,6 +47,7 @@ bool isNumCardsValid(vector<int> input)
     {
         if(input[i] <= 0 || input[i] >= 14)
         {
+            cout << "Input kartu hanya dapat berupa angka [2, 10] atau karakter A, J, Q, dan K (huruf kapital)!\n";
             return false;
         }
     }
@@ -49,9 +56,10 @@ bool isNumCardsValid(vector<int> input)
 
 }
 
-
 vector<int> cardToNum(vector<string> cards)
 {   
+    // mengubah vektor string kartu menjadi vektor nilai kartu tersebut
+
     map<string, int> cardMap;
     vector<int> res;
 
@@ -66,7 +74,9 @@ vector<int> cardToNum(vector<string> cards)
     cardMap["Q"] = 12;
     cardMap["K"] = 13;
 
-    for(int i = 0; i < 4; i++)
+    int l = cards.size();
+
+    for(int i = 0; i < l; i++)
     {
         res.push_back(cardMap[cards[i]]);
     }
@@ -77,6 +87,8 @@ vector<int> cardToNum(vector<string> cards)
 
 vector<string> numToCard(vector<int> nums)
 {
+    // mengubah vektor nilai kartu menjadi vektor string kartu
+
     map<int, string> cardMap;
     vector<string> res;
 
@@ -91,7 +103,9 @@ vector<string> numToCard(vector<int> nums)
     cardMap[12] = "Q";
     cardMap[13] = "K";
 
-    for(int i = 0; i < 4; i++)
+    int l = nums.size();
+
+    for(int i = 0; i < l; i++)
     {
         res.push_back(cardMap[nums[i]]);
     }
@@ -100,4 +114,62 @@ vector<string> numToCard(vector<int> nums)
 
 }
 
+// void printVector(vector<string> outputs)
+// {
+//     int l = outputs.size();
+ 
+//     for(int i = 0; i < l-1; i++)
+//     {
+//         cout << outputs[i] + " ";
+//     }
+
+//     cout << outputs[l-1];
+// }
+
+// void printVector(vector<int> outputs)
+// {
+//     int l = outputs.size();
+
+//     for(int i = 0; i < l-1; i++)
+//     {
+//         cout << to_string(outputs[i]) + " ";
+//     }
+
+//     cout << outputs[l-1];
+// }
+
+// void nl()
+// {
+//     cout << "\n";
+// }
+
+// string removeExtraSpace(string s)
+// {
+//     return regex_replace(s, regex("^ +| +$|( ) +"), "$1");
+// }
+
+// int main()
+// {
+//     string s = " A Q J  9";
+//     vector<string> splittedStr = split(removeExtraSpace(s), ' ');
+//     printVector(splittedStr);
+//     nl();
+
+//     bool isCardStrValid = isCardString(s);
+
+//     if (isCardStrValid)
+//     {
+//         vector<int> nums = cardToNum(splittedStr);
+//         printVector(nums);
+//         nl();
+
+//         if (isNumCardsValid(nums))
+//         {
+//             vector<string> cards = numToCard(nums);
+//             printVector(cards);
+//             nl();
+//         }
+//     }
+//     return 0;
+// }
 

@@ -5,6 +5,10 @@
         "xstring": "cpp",
         "map": "cpp",
         "string": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "iostream": "cpp",
+        "fstream": "cpp",
+        "tuple": "cpp",
+        "filesystem": "cpp"
     }
 }
