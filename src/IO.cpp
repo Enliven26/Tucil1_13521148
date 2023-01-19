@@ -13,6 +13,7 @@ using namespace std;
 string fixExtension(string fileName)
 {
     // make sure file extension is txt
+
     int idx = fileName.find('.');
 
     if (idx == string::npos)
@@ -25,11 +26,15 @@ string fixExtension(string fileName)
 
 string removeExtraSpace(string s)
 {
+    // menghilangkan extra space pada suatu string 
+
     return regex_replace(s, regex("^ +| +$|( ) +"), "$1");
 }
 
 void printVector(vector<string> outputs)
 {
+    // mencetak vektor string
+
     int l = outputs.size();
  
     for(int i = 0; i < l-1; i++)
@@ -42,6 +47,8 @@ void printVector(vector<string> outputs)
 
 void printVector(vector<int> outputs)
 {
+    // mencetak vektor angka 
+
     int l = outputs.size();
 
     for(int i = 0; i < l-1; i++)
@@ -60,6 +67,8 @@ void nl()
 
 tuple<bool, vector<int>> isInputValid(string input)
 {
+    // memeriksa apakah input 4 simbol kartu valid
+    
     bool isValid = false;
     vector<string> inputVector;
     vector<int> inputNums;
