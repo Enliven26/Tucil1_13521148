@@ -1,14 +1,12 @@
 using namespace std;
-#include <string>
-#include <map>
-#include <vector>
 #include <iostream>
 #include <fstream>
 #include <istream>
 #include <regex>
 
 // from src
-#include "card.cpp"
+#include "./headers/IO.h"
+#include "./headers/card.h"
 
 string fixExtension(string fileName)
 {
@@ -75,7 +73,8 @@ tuple<bool, vector<int>> isInputValid(string input)
     
     if (!isCardString(input))
     {
-        cout << "Input kartu hanya dapat berupa angka [2, 10] atau karakter A, J, Q, dan K (huruf kapital)!\n";
+        cout << "\nInput kartu hanya dapat berupa angka [2, 10] atau karakter A, J, Q, dan K (huruf kapital)!\n";
+        nl();
     }
 
     else{
@@ -85,7 +84,9 @@ tuple<bool, vector<int>> isInputValid(string input)
 
         if (isNumCardsValid(inputNums))
         {
-            cout << "Input kartu berhasil!\n";
+            cout << "\nInput kartu berhasil!\n";
+            nl();
+            
             isValid = true;
         }
     }
@@ -106,18 +107,12 @@ vector<int> getCards()
 
     while (!stop)
     {
+        cout << "\nMasukkan 4 simbol kartu : ";
         getline(cin >> ws, input);
-
-        if (input == "exit")
-        {
-            stop = true;
-        }
-
-        else {
             
-            res = isInputValid(removeExtraSpace(input));
-            stop = get<0>(res);
-        }
+        res = isInputValid(removeExtraSpace(input));
+        stop = get<0>(res);
+
     }
 
     return get<1>(res);
@@ -154,7 +149,8 @@ vector<int> getInputFile()
 
         else
         {
-            cout << "Gagal membuka file!\n[Pastikan nama file benar]\n";
+            cout << "\nGagal membuka file!\n[Pastikan nama file benar]\n";
+            nl();
         }
     
     }
@@ -162,30 +158,126 @@ vector<int> getInputFile()
     return get<1>(res);
 }
 
-void writeFile(vector<string> outputs, string fileName)
+void printResult(vector<string> outputs, float time)
+{
+    int l = outputs.size();
+
+    cout << "\nBanyak solusi ditemukan : " + to_string(l) + "\n";
+
+    nl();
+
+    for(int i = 0; i < l; i++)
+    {
+        cout << outputs[i] + "\n";
+    }
+
+    nl();
+
+    cout << "Waktu eksekusi : " + to_string(time / 1000) + "ms\n";
+
+    nl();
+}
+
+void writeFile(vector<string> outputs, float time)
 {
     // write outputs to a file
 
-    string dist = "../test/output/";
+    string dist = "../test/output/", fileName;
+
+    cout << "Masukkan nama file: " + dist;
+    getline(cin >> ws, fileName);
 
     ofstream fileStream(dist + fixExtension(fileName));
 
     if (fileStream.is_open())
     {
         int l = outputs.size();
-    
+
+        fileStream << "Banyak solusi ditemukan : " + to_string(l) + "\n\n";
+
         for(int i = 0; i < l; i++)
         {
             fileStream << outputs[i] + "\n";
         }
 
+        fileStream << "\nWaktu eksekusi : " + to_string(time / 1000) + "ms\n";
+        
         fileStream.close();
     }
     
     else
     {
-        cout << "Gagal membuka file!\n";
+        cout << "Gagal membuat file!\n[Masukkan ulang nama file]\n";
     }
+
+    nl();
+
+    
+
+}
+
+void welcome()
+{
+    cout << "    __  ___    ___     __ __    ______           ____  ______          ___    __ __ \n";
+    cout << "   /  |/  /   /   |   / //_/   / ____/          /  _/ /_  __/         |__ \\  / // /\n";
+    cout << "  / /|_/ /   / /| |  /   /    / __/             / /    / /            __/ / / // /_ \n";
+    cout << " / /  / /   / ___ | / /| |   / /___           _/ /    / /            / __/ /__  __/ \n";
+    cout << "/_/  /_/   /_/  |_|/_/ |_|  /_____/          /___/   /_/            /____/   /_/    \n";
+                                                              
+}
+
+void welcomeMenu()
+{
+    nl();
+    cout << "[1] Start\n";
+    cout << "[2] Exit\n";
+    nl();
+}
+
+void inputMenu()
+{
+    nl();
+    cout << "==== PILIHAN MASUKAN ====\n";
+    nl();
+    cout << "[1] Kartu Acak\n";
+    cout << "[2] Input Konsol\n";
+    cout << "[3] Input File\n";
+    cout << "[4] Exit\n";
+    nl(); 
+}
+
+void outputMenu()
+{
+    nl();
+    cout << "==== PILIHAN KELUARAN ====\n";
+    cout << "[1] Tampilkan ke Konsol\n";
+    cout << "[2] Tulis ke File\n";
+    nl();
+}
+
+int inputChoice(int lowerBound, int upperBound)
+{
+    int input;
+
+    while (true)
+    {
+        cout << "Pilihan : ";
+        cin >> input;
+        
+        nl();
+
+        if (input < lowerBound || input > upperBound)
+        {
+            cout << "Input pilihan hanya dapat berada pada rentang [" + to_string(lowerBound) + "," + to_string(upperBound) + "]!\n";
+            nl();
+        }
+
+        else {
+            break;
+        }
+    }
+
+    return input;
 }
 
 // int main()

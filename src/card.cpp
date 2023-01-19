@@ -1,13 +1,15 @@
 using namespace std;
-#include <string>
-#include <vector>
 #include <sstream>
 #include <cstring>
-#include <map>
 #include <iostream>
 #include <regex>
 
-vector<string> split(string s, char delimeter = ' ')
+#include "./headers/card.h"
+
+map<string, int> cardMap {{"A", 1}, {"2", 2}, {"3", 3}, {"4", 4}, {"5", 5}, {"6", 6}, {"7", 7}, {"8", 8}, {"9", 9}, {"10", 10}, {"J", 11}, {"Q", 12}, {"K", 13}};
+map<int, string> numMap {{1, "A"}, {2, "2"}, {3, "3"}, {4, "4"}, {5, "5"}, {6, "6"}, {7, "7"}, {8, "8"}, {9, "9"}, {10, "10"}, {11, "J"}, {12, "Q"}, {13, "K"}};
+
+vector<string> split(string s, char delimeter)
 {
     // split string into vector of strings by certain delimeter
 
@@ -60,19 +62,7 @@ vector<int> cardToNum(vector<string> cards)
 {   
     // mengubah vektor string kartu menjadi vektor nilai kartu tersebut
 
-    map<string, int> cardMap;
     vector<int> res;
-
-    for(int i = 2; i <= 10; i++)
-    {
-    
-        cardMap[to_string(i)] = i;
-    }
-
-    cardMap["A"] = 1;
-    cardMap["J"] = 11;
-    cardMap["Q"] = 12;
-    cardMap["K"] = 13;
 
     int l = cards.size();
 
@@ -89,25 +79,13 @@ vector<string> numToCard(vector<int> nums)
 {
     // mengubah vektor nilai kartu menjadi vektor string kartu
 
-    map<int, string> cardMap;
     vector<string> res;
-
-    for(int i = 2; i <= 10; i++)
-    {
-    
-        cardMap[i] = to_string(i);
-    }
-
-    cardMap[1] = "A";
-    cardMap[11] = "J";
-    cardMap[12] = "Q";
-    cardMap[13] = "K";
 
     int l = nums.size();
 
     for(int i = 0; i < l; i++)
     {
-        res.push_back(cardMap[nums[i]]);
+        res.push_back(numMap[nums[i]]);
     }
 
     return res;

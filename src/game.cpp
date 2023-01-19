@@ -1,12 +1,10 @@
 using namespace std;
-#include <string>
-#include <map>
-#include <vector>
-#include <set>
+
+#include <regex>
 
 // from src
-#include "IO.cpp"
-
+#include "./headers/game.h"
+#include "./headers/card.h"
 
 vector<string> opCombination;
 bool isConfigured = false;
@@ -18,13 +16,13 @@ vector<int> generateRandom()
 
     for (int i = 0; i < 4; i++)
     {
-        res[i] = rand() % 14;
+        res[i] = (rand() % 13) + 1;
     }
 
     return res;
 }
 
-set<vector<int>> permute(vector<int> nums, int offset, int idx = 0)
+set<vector<int>> permute(vector<int> nums, int offset, int idx)
 {
     // return all permutation of nums
 
@@ -47,8 +45,8 @@ set<vector<int>> permute(vector<int> nums, int offset, int idx = 0)
         swap(nums[idx], nums[i]);
 
         set<vector<int>> temp = permute(nums, offset, idx+1);
-
-        merge(res.begin(), res.end(), temp.begin(), temp.end(), inserter(res, res.begin()));      
+    
+        set_union(res.begin(), res.end(), temp.begin(), temp.end(), inserter(res, res.begin()));      
 
         swap(nums[idx], nums[i]);
     }
@@ -228,15 +226,16 @@ void config()
 {
     // membuat konfigurasi kombinasi operator yang mungkin
     string symbols = "+-*/";
+
+    srand((unsigned int)time(NULL));
     opCombination = repeatingCombination(symbols, symbols.length(), 3);
 }
 
-vector<string> find(vector<string> cards)
+vector<string> find(vector<int> nums)
 {
     // mengembalikan semua solusi game 24 untuk nilai-nilai kartu tertentu
 
-    vector<int> nums = cardToNum(cards);
-    set<vector<int>> permutation = permute(nums, cards.size());
+    set<vector<int>> permutation = permute(nums, nums.size());
     vector<string> res;
 
     if (!isConfigured)
@@ -261,41 +260,41 @@ vector<string> find(vector<string> cards)
     return res;
 }
 
-int main()
-{
-    vector<string> c {"8", "10", "Q", "2"};
-    vector<int> v {1, 10, 3, 7};
-    // set<vector<int>> temp = permute(v, v.size());
+// int main()
+// {
+//     vector<string> c {"8", "10", "Q", "2"};
+//     vector<int> v {1, 10, 3, 7};
+//     // set<vector<int>> temp = permute(v, v.size());
    
-    // for (auto elmt : temp)
-    // {
-    //     printVector(elmt);
-    //     nl();
-    // }
+//     // for (auto elmt : temp)
+//     // {
+//     //     printVector(elmt);
+//     //     nl();
+//     // }
 
-    // printVector(repeatingCombination("aB3", 3, 3));
+//     // printVector(repeatingCombination("aB3", 3, 3));
 
-    // cout << evaluator(v, "+++", 0); nl();
-    // cout << evaluator(v, "---", 1); nl();
-    // cout << evaluator(v, "***", 2); nl();
-    // cout << evaluator(v, "///", 3); nl();
+//     // cout << evaluator(v, "+++", 0); nl();
+//     // cout << evaluator(v, "---", 1); nl();
+//     // cout << evaluator(v, "***", 2); nl();
+//     // cout << evaluator(v, "///", 3); nl();
 
-    // cout << generateString(v, "-+*", 0); nl();
-    // cout << generateString(v, "-+*", 1); nl();
-    // cout << generateString(v, "-+*", 2); nl();
-    // cout << generateString(v, "-+*", 3); nl();
-    // cout << generateString(v, "-+*", 4); nl();
+//     // cout << generateString(v, "-+*", 0); nl();
+//     // cout << generateString(v, "-+*", 1); nl();
+//     // cout << generateString(v, "-+*", 2); nl();
+//     // cout << generateString(v, "-+*", 3); nl();
+//     // cout << generateString(v, "-+*", 4); nl();
 
-    auto res = find(c);
+//     auto res = find(c);
 
-    cout<< "banyak hasil : " + to_string(res.size());
-    nl();
+//     cout<< "banyak hasil : " + to_string(res.size());
+//     cout<<"\n";
 
-    for (auto elmt : res)
-    {
-        cout<<elmt;
-        nl();
-    }
+//     for (auto elmt : res)
+//     {
+//         cout<<elmt;
+//         cout<<"\n";
+//     }
 
-    return 0;
-}
+//     return 0;
+// }

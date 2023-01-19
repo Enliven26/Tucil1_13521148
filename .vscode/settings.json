@@ -12,6 +12,8 @@
         "filesystem": "cpp",
         "xutility": "cpp",
         "xtree": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "chrono": "cpp",
+        "iterator": "cpp"
     }
 }
