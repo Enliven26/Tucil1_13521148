@@ -202,6 +202,10 @@ void writeFile(vector<string> outputs, float time)
         fileStream << "\nWaktu eksekusi : " + to_string(time / 1000) + "ms\n";
         
         fileStream.close();
+    
+        cout << "\nBerhasil menulis hasil ke file!\n";
+
+        nl();
     }
     
     else
@@ -248,9 +252,9 @@ void inputMenu()
 void outputMenu()
 {
     nl();
-    cout << "==== PILIHAN KELUARAN ====\n";
-    cout << "[1] Tampilkan ke Konsol\n";
-    cout << "[2] Tulis ke File\n";
+    cout << "Simpan Hasil?\n";
+    cout << "[1] Ya\n";
+    cout << "[2] Tidak\n";
     nl();
 }
 

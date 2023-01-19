@@ -1,0 +1,36 @@
+Banyak solusi ditemukan : 32
+
+(A * Q) * (K - J)
+A * (Q * (K - J))
+((A * K) - J) * Q
+(A * (K - J)) * Q
+A * ((K - J) * Q)
+(Q * A) * (K - J)
+Q * ((A * K) - J)
+Q * (A * (K - J))
+(Q / A) * (K - J)
+Q / (A / (K - J))
+Q * (K - (A * J))
+Q * ((K * A) - J)
+Q * ((K / A) - J)
+(Q * (K - J)) * A
+Q * ((K - J) * A)
+Q * (K - (J * A))
+(Q * (K - J)) / A
+Q * ((K - J) / A)
+Q * (K - (J / A))
+(K - (A * J)) * Q
+((K * A) - J) * Q
+((K / A) - J) * Q
+((K - J) * A) * Q
+(K - J) * (A * Q)
+(K - (J * A)) * Q
+((K - J) / A) * Q
+(K - (J / A)) * Q
+(K - J) / (A / Q)
+((K - J) * Q) * A
+(K - J) * (Q * A)
+((K - J) * Q) / A
+(K - J) * (Q / A)
+
+Waktu eksekusi : 4.008000ms

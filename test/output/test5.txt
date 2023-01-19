@@ -1,0 +1,6 @@
+Banyak solusi ditemukan : 2
+
+(10 * (J - 8)) - 6
+((J - 8) * 10) - 6
+
+Waktu eksekusi : 4.011000ms

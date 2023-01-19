@@ -15,7 +15,7 @@ int main()
     vector<string> res;
 
     config();
-    
+
     welcome();
     welcomeMenu();
 
@@ -61,16 +61,13 @@ int main()
                 
                 float time = duration.count();
 
+                printResult(res, time);
+
                 outputMenu();
 
                 input = inputChoice(1, 2);
 
                 if (input == 1)
-                {
-                    printResult(res, time);
-                }
-
-                else
                 {
                     writeFile(res, time);
                 }
