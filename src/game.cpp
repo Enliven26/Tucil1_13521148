@@ -172,7 +172,7 @@ float evaluator(vector<int>nums, string ops,  int parenthesisMode)
     }
 
     return res;
-    
+
 }
 
 string splitOp(string op)
