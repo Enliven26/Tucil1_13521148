@@ -1,6 +1,7 @@
 using namespace std;
 
 #include <regex>
+#include <float.h>
 
 // from src
 #include "./headers/game.h"
@@ -8,6 +9,16 @@ using namespace std;
 
 vector<string> opCombination;
 bool isConfigured = false;
+
+float float_abs(float a)
+{
+    if (a < 0)
+    {
+        return -a;
+    }
+
+    return a;
+}
 
 vector<int> generateRandom()
 {
@@ -249,7 +260,7 @@ vector<string> find(vector<int> nums)
         {
             for (int i = 0; i < 5; i++)
             {
-                if (evaluator(elmt, ops, i) == 24)
+                if (float_abs(evaluator(elmt, ops, i) - 24) < FLT_EPSILON)
                 {
                     res.push_back(generateString(elmt, ops, i));
                 }
