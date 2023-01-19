@@ -9,6 +9,8 @@
         "iostream": "cpp",
         "fstream": "cpp",
         "tuple": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "xutility": "cpp",
+        "xtree": "cpp"
     }
 }

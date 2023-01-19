@@ -179,9 +179,9 @@ void writeFile(vector<string> outputs, string fileName)
     }
 }
 
-int main()
-{
-    vector<string> outputs {"a", "ba", "c"};
-    writeFile(outputs, "aaaaaa.t3");
-    return 0;
-}
+// int main()
+// {
+//     vector<string> outputs {"a", "ba", "c"};
+//     writeFile(outputs, "aaaaaa.t3");
+//     return 0;
+// }
