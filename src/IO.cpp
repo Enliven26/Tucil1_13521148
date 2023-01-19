@@ -70,7 +70,7 @@ tuple<bool, vector<int>> isInputValid(string input)
     bool isValid = false;
     vector<string> inputVector;
     vector<int> inputNums;
-    
+
     if (!isCardString(input))
     {
         cout << "\nInput kartu hanya dapat berupa angka [2, 10] atau karakter A, J, Q, dan K (huruf kapital)!\n";
@@ -116,7 +116,6 @@ vector<int> getCards()
     }
 
     return get<1>(res);
-
 }
 
 vector<int> getInputFile()
