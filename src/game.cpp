@@ -61,13 +61,13 @@ set<vector<int>> permute(vector<int> nums, int offset, int idx)
 
         swap(nums[idx], nums[i]);
     }
-    
+
     return res;
 }
 
 vector<string> repeatingCombination(string symbols, int symbolNum, int length)
 {
-    // return repeating combination from distinct symbols
+    // return repeating combination (and their permutations) from distinct symbols
     
     vector<string> res {};
 
@@ -270,42 +270,3 @@ vector<string> find(vector<int> nums)
 
     return res;
 }
-
-// int main()
-// {
-//     vector<string> c {"8", "10", "Q", "2"};
-//     vector<int> v {1, 10, 3, 7};
-//     // set<vector<int>> temp = permute(v, v.size());
-   
-//     // for (auto elmt : temp)
-//     // {
-//     //     printVector(elmt);
-//     //     nl();
-//     // }
-
-//     // printVector(repeatingCombination("aB3", 3, 3));
-
-//     // cout << evaluator(v, "+++", 0); nl();
-//     // cout << evaluator(v, "---", 1); nl();
-//     // cout << evaluator(v, "***", 2); nl();
-//     // cout << evaluator(v, "///", 3); nl();
-
-//     // cout << generateString(v, "-+*", 0); nl();
-//     // cout << generateString(v, "-+*", 1); nl();
-//     // cout << generateString(v, "-+*", 2); nl();
-//     // cout << generateString(v, "-+*", 3); nl();
-//     // cout << generateString(v, "-+*", 4); nl();
-
-//     auto res = find(c);
-
-//     cout<< "banyak hasil : " + to_string(res.size());
-//     cout<<"\n";
-
-//     for (auto elmt : res)
-//     {
-//         cout<<elmt;
-//         cout<<"\n";
-//     }
-
-//     return 0;
-// }

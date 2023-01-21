@@ -1,5 +1,5 @@
 # MAKE IT 24 | Tugas Kecil 1 IF2211 Strategi Algoritma
-Make It 24 is an arithmetic card-game with the purpose to get 24 as a result from 4 random numbers that is represented in 4 cards. The result may be obtained by using combination-with-repetitions of arithmetical operations: +, -, *, /, combined with parentheses ( () ) and every permutation of the 4 cards to create every possible arithmetic expressions using brute force algorithm. Each expression that give 24 as a result will be taken as one of the solutions.
+Make It 24 is an arithmetic card-game with the purpose to get 24 as a result from 4 random numbers that is represented in 4 cards. The result may be obtained by using combination-with-repetitions and their permutations of arithmetical operations: +, -, *, /, combined with parentheses ( () ) and every permutation of the 4 cards to create every possible arithmetic expressions using brute force algorithm. Each expression that give 24 as a result will be taken as one of the solutions.
 
 ## How To Run?
 

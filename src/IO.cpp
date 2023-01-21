@@ -269,7 +269,15 @@ int inputChoice(int lowerBound, int upperBound)
         
         nl();
 
-        if (input < lowerBound || input > upperBound)
+        if (cin.fail())
+        {
+            cout << "Pastikan input pilihan berupa angka!\n";
+            cin.clear();
+            cin.sync();
+            
+            nl();
+        }
+        else if (input < lowerBound || input > upperBound)
         {
             cout << "Input pilihan hanya dapat berada pada rentang [" + to_string(lowerBound) + "," + to_string(upperBound) + "]!\n";
             nl();
@@ -282,10 +290,3 @@ int inputChoice(int lowerBound, int upperBound)
 
     return input;
 }
-
-// int main()
-// {
-//     vector<string> outputs {"a", "ba", "c"};
-//     writeFile(outputs, "aaaaaa.t3");
-//     return 0;
-// }
