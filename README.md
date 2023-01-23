@@ -21,7 +21,7 @@ Make It 24 is an arithmetic card-game with the purpose to get 24 as a result fro
 
 Windows :
 1. Clone folder with `git clone https://github.com/Enliven26/Tucil1_13521148`
-2. Go to the folder `cd Algeo01-21055`
+2. Go to the folder `cd TUCIL1_13521148`
 3. Type `main.bat` or `./main.bat` on the terminal, you can also click the icon (it will automatically compile all `.cpp` files)
 
 ## About Author
